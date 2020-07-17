@@ -1,0 +1,24 @@
+python remove_space.py
+
+rouge -f data/pred_20200226_bilstm2.txt data/tgt-test_word_new.txt --avg
+
+rouge -f data/pred_20200309_bigru1.txt data/tgt-test_word_new.txt --avg
+
+
+rouge -f data/pred_20200313_word100_nofast.txt data/tgt-test_word_new.txt --avg
+
+
+rouge -f data/pred_20200326_bilstm1.txt data/tgt-test_word_new.txt --avg
+
+rouge -f data/pred_20200301_bigru3.txt data/tgt-test_word_new.txt --avg
+
+rouge -f data/pred_20200509_accumcount8.txt data/tgt-test_word_new.txt --avg
+
+rouge -f data/pred_20200620_sentence250.txt data/tgt-test_word_new.txt --avg
+
+rouge -f data/pred_20200624_word200.txt data/tgt-test_word_new.txt --avg
+
+rouge -f data/pred_20200321_bilstm3_random.txt data/tgt-test_word_new.txt --avg
+rouge -f data/pred_20200321_bilstm3_greedy.txt data/tgt-test_word_new.txt --avg
+
+rouge -f data/pred_20200708_long_word100_.txt data/tgt-test_word_new.txt --avg
