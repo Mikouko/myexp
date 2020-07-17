@@ -1,0 +1,269 @@
+
+記得要改目錄不然會覆蓋
+																					python  train.py -data data/data -save_model myexp/transformer/model/20191121_newdata \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 2 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -world_size 1 -gpu_ranks 0 \
+	-train_from myexp/transformer/model/20191123_useembedding_step_80000.pt \
+	-pre_word_vecs_enc data/embeddings.enc.pt -pre_word_vecs_dec data/embeddings.dec.pt \
+
+
+new parameter（accum_count 4)
+																								python  train.py -data data/data -save_model myexp/transformer/model/20191123_newparameter \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -world_size 2 -gpu_ranks 0 1 \
+	-train_from myexp/transformer/model/20191123_newparameter_step_180000.pt \
+	-pre_word_vecs_enc data/embeddings.enc.pt -pre_word_vecs_dec data/embeddings.dec.pt \
+
+python  train.py -data data/addtag/word_100_25/data -save_model myexp/transformer/model/20200218_word100_accum6 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 6 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -world_size 1 -gpu_ranks 0 \
+	-pre_word_vecs_enc data/addtag/word_100_25/embeddings.enc.pt -pre_word_vecs_dec data/addtag/word_100_25/embeddings.dec.pt \
+
+
+---------
+python  train.py -data data/data -save_model myexp/transformer/model/20200509_accumcount8 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 8 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -log_file myexp/20200509_accumcount8 \
+        -world_size 1 -gpu_ranks 0 \
+好像沒用到gpu？？？
+
+
+---------
+
+好像沒用到embedding ....
+python  train.py -data data/bilstm2/data -save_model myexp/transformer/model/20200226_bilstm2 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -log_file myexp/20200226_bilstm2 \
+        -world_size 2 -gpu_ranks 0 1 \
+	-pre_word_vecs_enc data/bilstm2/embeddings.enc.pt -pre_word_vecs_dec data/bilstm2/embeddings.dec.pt \
+	-train_from myexp/transformer/model/20200226_bilstm2_step_180000.pt \
+
+python  train.py -data data/bigru3/data -save_model myexp/transformer/model/20200301_bigru3 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -log_file myexp/20200301_bigru3 \
+        -world_size 2 -gpu_ranks 0 1 \
+	-pre_word_vecs_enc data/bigru3/embeddings.enc.pt -pre_word_vecs_dec data/bigru3/embeddings.dec.pt \
+	-train_from myexp/transformer/model/20200301_bigru3_step_100000.pt \
+
+python  train.py -data data/bilstm/data -save_model myexp/transformer/model/20200222_bilstm \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -log_file myexp/20200222_bilstm \
+        -world_size 2 -gpu_ranks 0 1 \
+
+
+-----
+
+
+python  train.py -data data/bilstm2/data -save_model myexp/transformer/model/20200128_bilstm2 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -log_file myexp/20200128_bilstm2 \
+        -world_size 2 -gpu_ranks 0 1 \
+
+
+
+----
+重試
+
+python  train.py -data data/bigru/data -save_model myexp/transformer/model/20200309_bigru1 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -log_file myexp/20200309_bigru1 \
+        -world_size 2 -gpu_ranks 0 1 \
+	-pre_word_vecs_enc data/bigru/embeddings.enc.pt -pre_word_vecs_dec data/bigru/embeddings.dec.pt \
+        -train_from myexp/transformer/model/20200309_bigru1_step_190000.pt \
+
+python  train.py -data data/addtag/word_100_25/data -save_model myexp/transformer/model/20200313_word100_nofast \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -world_size 2 -gpu_ranks 0 1 \
+        -train_from myexp/transformer/model/20200313_word100_nofast_step_150000.pt \
+
+
+
+
+python  train.py -data data/bilstm3/data -save_model myexp/transformer/model/20200321_bilstm3 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -log_file myexp/20200321_bilstm3 \
+        -pre_word_vecs_enc data/bilstm3/embeddings.enc.pt -pre_word_vecs_dec data/bilstm3/embeddings.dec.pt \
+        -world_size 2 -gpu_ranks 0 1 \
+        -train_from myexp/transformer/model/20200321_bilstm3_step_100000.pt \
+
+
+python  train.py -data data/bilstm/data -save_model myexp/transformer/model/20200326_bilstm1 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -log_file myexp/20200326_bilstm1 \
+        -pre_word_vecs_enc data/bilstm/embeddings.enc.pt -pre_word_vecs_dec data/bilstm/embeddings.dec.pt \
+        -world_size 2 -gpu_ranks 0 1 \
+        -train_from myexp/transformer/model/20200326_bilstm1_step_30000.pt \
+
+
+
+
+python  train.py -data data/addtag/sentence_150_25/data -save_model myexp/transformer/model/20200616_sentence150 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -world_size 1 -gpu_ranks 0 \
+	-pre_word_vecs_enc data/addtag/sentence_150_25/embeddings.enc.pt -pre_word_vecs_dec data/addtag/sentence_150_25/embeddings.dec.pt \
+        -log_file myexp/20200616_sentence150 \
+       -train_from myexp/transformer/model/20200616_sentence150_step_110000.pt \
+
+
+
+python  train.py -data data/addtag/sentence_250_25/data -save_model myexp/transformer/model/20200620_sentence250 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -world_size 1 -gpu_ranks 0 \
+	-pre_word_vecs_enc data/addtag/sentence_250_25/embeddings.enc.pt -pre_word_vecs_dec data/addtag/sentence_250_25/embeddings.dec.pt \
+        -log_file myexp/20200620_sentence250 \
+        -train_from myexp/transformer/model/20200620_sentence250_step_40000.pt \
+
+
+
+python  train.py -data data/addtag/word_200_25/data -save_model myexp/transformer/model/20200624_word200 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -world_size 2 -gpu_ranks 0 1 \
+	-pre_word_vecs_enc data/addtag/word_200_25/embeddings.enc.pt -pre_word_vecs_dec data/addtag/word_200_25/embeddings.dec.pt \
+        -log_file myexp/20200624_word200 \
+	-train_from myexp/transformer/model/20200624_word200_step_120000.pt \
+
+
+
+python  train.py -data data/addtag/text9/data -save_model myexp/transformer/model/20200706_text9 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -world_size 1 -gpu_ranks 0 \
+	-pre_word_vecs_enc data/addtag/text9/embeddings.enc.pt -pre_word_vecs_dec data/addtag/text9/embeddings.dec.pt \
+        -log_file myexp/20200706_text9 \
+
+
+python  train.py -data data/addtag/text11/data -save_model myexp/transformer/model/20200710_text11 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -world_size 1 -gpu_ranks 0 \
+	-pre_word_vecs_enc data/addtag/text11/embeddings.enc.pt -pre_word_vecs_dec data/addtag/text11/embeddings.dec.pt \
+        -log_file myexp/20200710_text11 \
+
+python  train.py -data data/addtag/sent1/data -save_model myexp/transformer/model/20200712_sent1 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -world_size 1 -gpu_ranks 0 \
+	-pre_word_vecs_enc data/addtag/sent1/embeddings.enc.pt -pre_word_vecs_dec data/addtag/sent1/embeddings.dec.pt \
+        -log_file myexp/20200712_sent1 \
+
+
+
+python  train.py -data data/addtag/sent3/data -save_model myexp/transformer/model/20200714_sent3 \
+        -layers 6 -rnn_size 512 -word_vec_size 512 -transformer_ff 2048 -heads 8  \
+        -encoder_type transformer -decoder_type transformer -position_encoding \
+        -train_steps 200000  -max_generator_batches 2 -dropout 0.1 \
+        -batch_size 4096 -batch_type tokens -normalization tokens  -accum_count 4 \
+        -optim adam -adam_beta2 0.998 -decay_method noam -warmup_steps 8000 -learning_rate 2 \
+        -max_grad_norm 0 -param_init 0  -param_init_glorot \
+        -label_smoothing 0.1 -valid_steps 10000 -save_checkpoint_steps 10000 \
+        -world_size 1 -gpu_ranks 0 \
+	-pre_word_vecs_enc data/addtag/sent3/embeddings.enc.pt -pre_word_vecs_dec data/addtag/sent3/embeddings.dec.pt \
+        -log_file myexp/20200714_sent3 \
+
+
+																																																																																																																																																																																																																																																																																																																																																																																																																																

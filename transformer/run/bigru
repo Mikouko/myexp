@@ -1,0 +1,96 @@
+onmt_train -save_model myexp/transformer/model/20200131_bigru_layer3 \
+           -data data/data \
+           -copy_attn \
+           -rnn_type GRU \
+           -global_attention mlp \
+           -word_vec_size 128 \
+           -rnn_size 512 \
+           -layers 3 \
+           -encoder_type brnn \
+           -train_steps 200000 \
+           -max_grad_norm 2 \
+           -dropout 0. \
+           -batch_size 16 \
+           -valid_batch_size 16 \
+           -optim adagrad \
+           -learning_rate 0.15 \
+           -adagrad_accumulator_init 0.1 \
+           -reuse_copy_attn \
+           -copy_loss_by_seqlength \
+           -bridge \
+           -seed 777 \
+           -save_checkpoint_steps 10000 \
+           -log_file myexp/bigru_layer3 \
+           -world_size 2 \
+           -gpu_ranks 0 1
+
+onmt_train -save_model myexp/transformer/model/20200312_bilstm_layer3 \
+           -data data/data \
+           -copy_attn \
+           -global_attention mlp \
+           -word_vec_size 128 \
+           -rnn_size 512 \
+           -layers 3 \
+           -encoder_type brnn \
+           -train_steps 200000 \
+           -max_grad_norm 2 \
+           -dropout 0. \
+           -batch_size 16 \
+           -valid_batch_size 16 \
+           -optim adagrad \
+           -learning_rate 0.15 \
+           -adagrad_accumulator_init 0.1 \
+           -reuse_copy_attn \
+           -copy_loss_by_seqlength \
+           -bridge \
+           -seed 777 \
+           -save_checkpoint_steps 10000 \
+           -log_file myexp/bilstm_layer3 \
+           -world_size 2 \
+           -gpu_ranks 0 1
+
+
+
+
+[2019-12-30 21:50:12,215 INFO] NMTModel(
+  (encoder): RNNEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(50004, 128, padding_idx=1)
+        )
+      )
+    )
+    (rnn): GRU(128, 256, bidirectional=True)
+    (bridge): ModuleList(
+      (0): Linear(in_features=256, out_features=256, bias=True)
+    )
+  )
+  (decoder): InputFeedRNNDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(50004, 128, padding_idx=1)
+        )
+      )
+    )
+    (dropout): Dropout(p=0.0, inplace=False)
+    (rnn): StackedGRU(
+      (dropout): Dropout(p=0.0, inplace=False)
+      (layers): ModuleList(
+        (0): GRUCell(640, 512)
+      )
+    )
+    (attn): GlobalAttention(
+      (linear_context): Linear(in_features=512, out_features=512, bias=False)
+      (linear_query): Linear(in_features=512, out_features=512, bias=True)
+      (v): Linear(in_features=512, out_features=1, bias=False)
+      (linear_out): Linear(in_features=1024, out_features=512, bias=True)
+    )
+  )
+  (generator): CopyGenerator(
+    (linear): Linear(in_features=512, out_features=50004, bias=True)
+    (linear_copy): Linear(in_features=512, out_features=1, bias=True)
+  )
+)
+

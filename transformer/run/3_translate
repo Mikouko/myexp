@@ -1,0 +1,46 @@
+python translate.py -gpu 0 -model model/20191212_sentece100_fasttext_step_200000.pt -src data/addtag/test_concat_data_sentence.txt -output pred/pred_20191212_sentence100.txt -verbose -replace_unk
+
+python translate.py -gpu 0 -model model/20191225_sentence300_fasttext_step_200000.pt -src data/src-test_word.txt -output pred/pred_20191225_sentence300_fasttext.txt -verbose -replace_unk
+
+python translate.py -gpu 0 -model model/20200116_accumcount6_step_200000.pt -src data/src-test_word.txt -output pred/pred_20200116_accumcount6.txt -verbose -replace_unk
+
+python translate.py -gpu 0 -model model/20200312_bilstm_layer3_step_200000.pt -src data/src-train_word.txt -output pred/pred_20200312_bilstm_layer3_train.txt -verbose -replace_unk
+
+python translate.py -gpu 0 -model model/20200120_bigru2_step_200000.pt -src data/bigru2/bigru_test_concat_data.txt -output pred/pred_20200120_bigru2.txt -verbose -replace_unk -beam_size 1
+
+python translate.py -gpu 0 -model model/20200201_bigru3_step_200000.pt -src data/bigru3/bigru3_test_concat_data.txt -output pred/pred_20200201_bigru3.txt -verbose -replace_unk -batch_size 1
+
+--
+python translate.py -gpu 0 -model model/20200313_word100_nofast_step_200000.pt -src data/addtag/test_concat_data_word.txt -output pred/pred_20200313_word100_nofast.txt -verbose -replace_unk
+
+python translate.py -gpu 0 -model model/20200326_bilstm1_step_200000.pt -src data/bilstm/bilstm1_test_concat_data.txt -output pred/pred_20200326_bilstm1.txt -verbose -replace_unk
+
+python translate.py -gpu 0 -model model/20200309_bigru1_step_200000.pt -src data/bigru/bigru_test_concat_data.txt -output pred/pred_20200309_bigru1.txt -verbose -replace_unk
+
+
+python translate.py -gpu 0 -model model/20200509_accumcount8_step_200000.pt -src data/src-test_word.txt -output pred/pred_20200509_accumcount8.txt -verbose -replace_unk
+
+python translate.py -gpu 0 -model model/20200616_sentence150_step_200000.pt -src data/addtag/test_concat_data_sentence.txt -output pred/pred_20200616_sentence150.txt -verbose -replace_unk
+
+python translate.py -gpu 0 -model model/20200620_sentence250_step_200000.pt -src data/addtag/test_concat_data_sentence.txt -output pred/pred_20200620_sentence250.txt -verbose -replace_unk
+
+python translate.py -gpu 0 -model model/20200624_word200_step_200000.pt -src data/addtag/test_concat_data_word.txt -output pred/pred_20200624_word200.txt -verbose -replace_unk
+
+---random
+python translate.py -gpu 0 -model model/20200321_bilstm3_step_200000.pt -src data/bilstm3/bilstm3_test_concat_data.txt -output pred/pred_20200321_bilstm1_random.txt -verbose -replace_unk -random_sampling_topk -1 -beam_size 1
+
+--greedy
+python translate.py -gpu 0 -model model/20200321_bilstm3_step_200000.pt -src data/bilstm3/bilstm3_test_concat_data.txt -output pred/pred_20200321_bilstm1_greedy.txt -verbose -replace_unk -random_sampling_topk 1 -beam_size 1
+
+
+
+python translate.py -gpu 1 -model model/20191209_word100_fasttext_step_200000.pt -src data/test_longtextsummary_10.txt -output pred/pred_20200708_long_word100_.txt -verbose -replace_unk
+
+python translate.py -gpu 1 -model model/20200706_text9_step_200000.pt -src data/test_longtextsummary_2.txt -output pred/pred_20200708_long_sent150_.txt -verbose -replace_unk
+
+
+--random_sampling_topk 
+-1 為random
+等於1 且--beam_size 1 為greed
+等於1用beamsearch
+

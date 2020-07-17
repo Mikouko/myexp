@@ -1,0 +1,29 @@
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/data.vocab.pt -output_file data/embeddings -type word2vec
+
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/addtag/sentence_200_25/data.vocab.pt -output_file data/addtag/sentence_200_25/embeddings 
+
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/addtag/sentence_150_25/data.vocab.pt -output_file data/addtag/sentence_150_25/embeddings 
+
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/addtag/sentence_250_25/data.vocab.pt -output_file data/addtag/sentence_250_25/embeddings 
+
+
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/addtag/word_200_25/data.vocab.pt -output_file data/addtag/word_200_25/embeddings 
+
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/bigru3/data.vocab.pt -output_file data/bigru3/embeddings 
+
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/bilstm/data.vocab.pt -output_file data/bilstm/embeddings 
+
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/bilstm2/data.vocab.pt -output_file data/bilstm2/embeddings 
+
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/bilstm3/data.vocab.pt -output_file data/bilstm3/embeddings 
+
+
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/addtag/sent1/data.vocab.pt -output_file data/addtag/sent1/embeddings 
+
+
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/addtag/sent3/data.vocab.pt -output_file data/addtag/sent3/embeddings 
+
+
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/addtag/text9/data.vocab.pt -output_file data/addtag/text9/embeddings 
+
+python ./tools/embeddings_to_torch.py -emb_file_enc embedding/wiki_500_sg_fastT.model -emb_file_dec embedding/wiki_500_sg_fastT.model -dict_file data/addtag/text11/data.vocab.pt -output_file data/addtag/text11/embeddings 

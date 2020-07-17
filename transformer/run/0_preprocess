@@ -1,0 +1,37 @@
+python preprocess.py -train_src data/src-train_word.txt -train_tgt data/tgt-train_word.txt -valid_src data/src-val_word.txt -valid_tgt data/tgt-val_word.txt -save_data data/data -src_seq_length 100 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
+
+
+python preprocess.py -train_src data/addtag/train_concat_data_sentence.txt -train_tgt data/tgt-train_word.txt -valid_src data/addtag/val_concat_data_sentence.txt -valid_tgt data/tgt-val_word.txt -save_data data/addtag/sentence_200_25/data -src_seq_length 200 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
+python preprocess.py -train_src data/addtag/train_concat_data_sentence.txt -train_tgt data/tgt-train_word.txt -valid_src data/addtag/val_concat_data_sentence.txt -valid_tgt data/tgt-val_word.txt -save_data data/addtag/sentence_150_25/data -src_seq_length 150 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
+
+python preprocess.py -train_src data/addtag/train_concat_data_sentence.txt -train_tgt data/tgt-train_word.txt -valid_src data/addtag/val_concat_data_sentence.txt -valid_tgt data/tgt-val_word.txt -save_data data/addtag/sentence_250_25/data -src_seq_length 250 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
+
+python preprocess.py -train_src data/addtag/train_concat_data_word.txt -train_tgt data/tgt-train_word.txt -valid_src data/addtag/val_concat_data_word.txt -valid_tgt data/tgt-val_word.txt -save_data data/addtag/word_200_25/data -src_seq_length 200 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
+
+python preprocess.py -train_src data/bigru3/bigru3_train_concat_data.txt -train_tgt data/bigru3/tgt-train_word.txt -valid_src data/bigru3/bigru3_val_concat_data.txt -valid_tgt data/bigru3/tgt-val_word.txt -save_data data/bigru3/data -src_seq_length 100 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
+python preprocess.py -train_src data/bilstm/bilstm1_train_concat_data.txt -train_tgt data/bilstm/tgt-train_word.txt -valid_src data/bilstm/bilstm1_val_concat_data.txt -valid_tgt data/bilstm/tgt-val_word.txt -save_data data/bilstm/data -src_seq_length 100 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
+python preprocess.py -train_src data/bilstm2/bilstm2_train_concat_data.txt -train_tgt data/bilstm2/tgt-train_word.txt -valid_src data/bilstm2/bilstm2_val_concat_data.txt -valid_tgt data/bilstm2/tgt-val_word.txt -save_data data/bilstm2/data -src_seq_length 100 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
+python preprocess.py -train_src data/bilstm3/bilstm3_train_concat_data.txt -train_tgt data/bilstm3/tgt-train_word.txt -valid_src data/bilstm3/bilstm3_val_concat_data.txt -valid_tgt data/bilstm3/tgt-val_word.txt -save_data data/bilstm3/data -src_seq_length 100 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
+
+
+
+
+python preprocess.py -train_src data/addtag/tfidf/sent1_train_concat_data.txt -train_tgt data/tgt-train_word.txt -valid_src data/addtag/tfidf/sent1_val_concat_data.txt -valid_tgt data/tgt-val_word.txt -save_data data/addtag/sent1/data -src_seq_length 150 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
+
+python preprocess.py -train_src data/addtag/tfidf/sent3_train_concat_data.txt -train_tgt data/tgt-train_word.txt -valid_src data/addtag/tfidf/sent3_val_concat_data.txt -valid_tgt data/tgt-val_word.txt -save_data data/addtag/sent3/data -src_seq_length 150 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
+
+python preprocess.py -train_src data/addtag/tfidf/text9_train_concat_data.txt -train_tgt data/tgt-train_word.txt -valid_src data/addtag/tfidf/text9_val_concat_data.txt -valid_tgt data/tgt-val_word.txt -save_data data/addtag/text9/data -src_seq_length 100 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
+python preprocess.py -train_src data/addtag/tfidf/text11_train_concat_data.txt -train_tgt data/tgt-train_word.txt -valid_src data/addtag/tfidf/text11_val_concat_data.txt -valid_tgt data/tgt-val_word.txt -save_data data/addtag/text11/data -src_seq_length 100 -tgt_seq_length 25 -dynamic_dict -share_vocab
+
